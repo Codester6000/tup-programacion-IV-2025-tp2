@@ -1,0 +1,59 @@
+### Obtener todas las tareas
+GET http://localhost:3000/tareas
+
+### Buscar tarea por ID
+GET http://localhost:3000/tareas/3
+
+### Listar tareas completadas
+GET http://localhost:3000/tareas?completada=true
+
+### Listar tareas pendientes
+GET http://localhost:3000/tareas?completada=false
+
+### Agregar una tarea nueva
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Comprar pan",
+    "completada": false
+}
+
+### Agregar otra tarea
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Estudiar para el examen",
+    "completada": true
+}
+
+### Agregar tarea con completada en 1
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Llamar al médico",
+    "completada": 1
+}
+
+### Agregar tarea con completada en 0
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+    "nombre": "Pagar servicios",
+    "completada": 0
+}
+
+### Borrar una tarea por ID
+DELETE http://localhost:3000/tareas/2
+
+### Modificar una tarea por ID
+PUT http://localhost:3000/tareas/3
+Content-Type: application/json
+
+{
+    "nombre": "Actualizar nombre",
+    "completada": 1
+}
