@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         params.push(estado);
     }
     const [rows] = await db.execute(query, params);
-    console.log(rows);
+    
     if (rows.length === 0) {
         return res.status(404).json({ success: false, message: 'No hay tareas' });
     }
@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', validarId(), verificarValidaciones, async (req, res) => {
     const { id } = req.params;
     const [rows] = await db.execute('SELECT * FROM tareas WHERE idtareas = ?', [id]);
-    console.log(rows);
+    
     if (rows.length === 0) {
         return res.status(404).json({ success: false, message: 'Tarea no encontrada' });
     }
@@ -45,7 +45,7 @@ router.post('/', validarTarea, verificarValidaciones, async (req, res) => {
         'INSERT INTO tareas (nombre, completada) VALUES (?, ?)',
         [nombre, completada]
     );
-    console.log(result);
+    
     return res.status(201).json({
         success: true,
         data: { id: result.insertId, nombre, completada: !!completada }
